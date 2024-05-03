@@ -95,7 +95,7 @@ public class TicTacToe {
         placeSymbol(gameBoard, cpuPos, Player.CPU);
         printGameBoard(gameBoard);
     }
-
+    
     private static void placeSymbol(char[][] gameBoard, int pos, Player player) {
         char symbol = (player == Player.PLAYER) ? PLAYER_SYMBOL : CPU_SYMBOL;
 
