@@ -5,7 +5,7 @@ public class TicTacToe {
     private static final char CPU_SYMBOL = 'O';
 
     private enum Player {
-        PLAYER, CPU
+        PLAYER, CPU 
     }
 
     static ArrayList<Integer> playerPositions = new ArrayList<>();
