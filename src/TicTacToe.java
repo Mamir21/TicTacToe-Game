@@ -8,7 +8,7 @@ public class TicTacToe {
         PLAYER, CPU 
     } 
 
-    static ArrayList<Integer> playerPositions = new ArrayList<>(); 
+    static ArrayList<Integer> playerPositions = new ArrayList<>();  
     static ArrayList<Integer> cpuPositions = new ArrayList<>(); 
 
     public static void main(String[] args) {
