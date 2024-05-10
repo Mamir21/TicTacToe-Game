@@ -9,7 +9,7 @@ public class TicTacToe {
     } 
 
     static ArrayList<Integer> playerPositions = new ArrayList<>(); 
-    static ArrayList<Integer> cpuPositions = new ArrayList<>();
+    static ArrayList<Integer> cpuPositions = new ArrayList<>(); 
 
     public static void main(String[] args) {
         while (true) {
