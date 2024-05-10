@@ -21,7 +21,7 @@ public class TicTacToe {
 
             if (!playAgain.equals("yes")) {
                 System.out.println("Thanks for playing. Goodbye!");
-                break;
+                break; 
             }
 
             // Reset the game state for a rematch
