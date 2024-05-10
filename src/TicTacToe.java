@@ -77,7 +77,7 @@ public class TicTacToe {
             try {
                 return scanner.nextInt();
             } catch (InputMismatchException e) {
-                scanner.next(); // consume the invalid input
+                scanner.next();
                 System.out.println("Invalid input. Please enter a number (1-9):");
             }
         }
