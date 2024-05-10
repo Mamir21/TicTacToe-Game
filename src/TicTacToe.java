@@ -149,19 +149,3 @@ public class TicTacToe {
                 Arrays.asList(7, 5, 3)
         );
 
-        for (List<Integer> l : winningWays) {
-            if (playerPositions.containsAll(l)) {
-                System.out.println("Congratulations, you won!");
-                return true;
-            } else if (cpuPositions.containsAll(l)) {
-                System.out.println("CPU won!");
-                return true;
-            } else if (playerPositions.size() + cpuPositions.size() == 9) {
-                System.out.println("Tie Game");
-                return true;
-            }
-        } 
-
-        return false;
-    }
-}
