@@ -161,7 +161,7 @@ public class TicTacToe {
                 System.out.println("Tie Game");
                 return true;
             }
-        }
+        } 
 
         return false;
     }
