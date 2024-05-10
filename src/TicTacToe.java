@@ -24,7 +24,6 @@ public class TicTacToe {
                 break; 
             }
 
-            // Reset the game state for a rematch
             playerPositions.clear();
             cpuPositions.clear();
         }
