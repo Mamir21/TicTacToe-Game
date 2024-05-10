@@ -12,7 +12,7 @@ public class TicTacToe {
     static ArrayList<Integer> cpuPositions = new ArrayList<>(); 
 
     public static void main(String[] args) {
-        while (true) {
+        while (true) { 
             playGame();
 
             System.out.println("Do you want to play again? (yes/no)");
