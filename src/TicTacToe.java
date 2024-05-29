@@ -6,7 +6,7 @@ public class TicTacToe {
 
     private enum Player {
         PLAYER, CPU
-    }  
+    }
 
     static ArrayList<Integer> playerPositions = new ArrayList<>();
     static ArrayList<Integer> cpuPositions = new ArrayList<>();
