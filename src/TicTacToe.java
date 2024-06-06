@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class TicTacToe {
+public class TicTacToe2 {
     private static final char PLAYER_SYMBOL = 'X';
     private static final char CPU_SYMBOL = 'O';
 
@@ -12,7 +12,7 @@ public class TicTacToe {
     static ArrayList<Integer> cpuPositions = new ArrayList<>();
 
     public static void main(String[] args) {
-        while (true) { 
+        while (true) {
             playGame();
 
             System.out.println("Do you want to play again? (yes/no)");
@@ -21,9 +21,10 @@ public class TicTacToe {
 
             if (!playAgain.equals("yes")) {
                 System.out.println("Thanks for playing. Goodbye!");
-                break; 
+                break;
             }
 
+            // Reset the game state for a rematch
             playerPositions.clear();
             cpuPositions.clear();
         }
@@ -48,16 +49,6 @@ public class TicTacToe {
         }
     }
 
-
-    private static void printGameBoard(char[][] gameBoard) {
-        for (char[] row : gameBoard) {
-            for (char c : row) {
-                System.out.print(c);
-            }
-            System.out.println();
-        }
-    }
-
     private static void playerTurn(char[][] gameBoard) {
         Scanner scan = new Scanner(System.in);
 
@@ -77,13 +68,58 @@ public class TicTacToe {
             try {
                 return scanner.nextInt();
             } catch (InputMismatchException e) {
-                scanner.next();
+                scanner.next(); // consume the invalid input
                 System.out.println("Invalid input. Please enter a number (1-9):");
             }
         }
     }
 
     private static void cpuTurn(char[][] gameBoard) {
+        int cpuPos;
+
+        // Check for winning moves
+        cpuPos = getWinningMove();
+        if (cpuPos == -1) {
+            // If no winning move, check for blocking player
+            cpuPos = getBlockingMove();
+        }
+
+        // If neither winning nor blocking move, make a random move
+        if (cpuPos == -1) {
+            cpuPos = getRandomMove();
+        }
+
+        placeSymbol(gameBoard, cpuPos, Player.CPU);
+        printGameBoard(gameBoard);
+    }
+
+    private static int getWinningMove() {
+        for (List<Integer> winCombo : getWinningCombinations()) {
+            if (cpuPositions.containsAll(winCombo) && !playerPositions.containsAll(winCombo)) {
+                for (int pos : winCombo) {
+                    if (!cpuPositions.contains(pos)) {
+                        return pos;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+    private static int getBlockingMove() {
+        for (List<Integer> winCombo : getWinningCombinations()) {
+            if (playerPositions.containsAll(winCombo) && !cpuPositions.containsAll(winCombo)) {
+                for (int pos : winCombo) {
+                    if (!playerPositions.contains(pos)) {
+                        return pos;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+    private static int getRandomMove() {
         Random rand = new Random();
         int cpuPos = rand.nextInt(9) + 1;
 
@@ -91,10 +127,9 @@ public class TicTacToe {
             cpuPos = rand.nextInt(9) + 1;
         }
 
-        placeSymbol(gameBoard, cpuPos, Player.CPU);
-        printGameBoard(gameBoard);
+        return cpuPos;
     }
-    
+
     private static void placeSymbol(char[][] gameBoard, int pos, Player player) {
         char symbol = (player == Player.PLAYER) ? PLAYER_SYMBOL : CPU_SYMBOL;
 
@@ -138,7 +173,35 @@ public class TicTacToe {
     }
 
     private static boolean checkGameOver() {
-        List<List<Integer>> winningWays = Arrays.asList(
+        for (List<Integer> winCombo : getWinningCombinations()) {
+            if (playerPositions.containsAll(winCombo)) {
+                System.out.println("Congratulations, you won!");
+                return true;
+            } else if (cpuPositions.containsAll(winCombo)) {
+                System.out.println("CPU won!");
+                return true;
+            }
+        }
+
+        if (playerPositions.size() + cpuPositions.size() == 9) {
+            System.out.println("Tie Game");
+            return true;
+        }
+
+        return false;
+    }
+
+    private static void printGameBoard(char[][] gameBoard) {
+        for (char[] row : gameBoard) {
+            for (char c : row) {
+                System.out.print(c);
+            }
+            System.out.println();
+        }
+    }
+
+    private static List<List<Integer>> getWinningCombinations() {
+        return Arrays.asList(
                 Arrays.asList(1, 2, 3),
                 Arrays.asList(4, 5, 6),
                 Arrays.asList(7, 8, 9),
@@ -148,20 +211,5 @@ public class TicTacToe {
                 Arrays.asList(1, 5, 9),
                 Arrays.asList(7, 5, 3)
         );
-
-        for (List<Integer> l : winningWays) {
-            if (playerPositions.containsAll(l)) {
-                System.out.println("Congratulations, you won!");
-                return true;
-            } else if (cpuPositions.containsAll(l)) {
-                System.out.println("CPU won!");
-                return true;
-            } else if (playerPositions.size() + cpuPositions.size() == 9) {
-                System.out.println("Tie Game");
-                return true;
-            }
-        } 
-
-        return false;
     }
 }
