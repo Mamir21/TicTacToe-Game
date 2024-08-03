@@ -23,7 +23,7 @@ This is a simple implementation of the classic Tic Tac Toe game in Java. The gam
    ```bash
    cd tic-tac-toe
 
-3. javac TicTacToe.java
+3. Compile the Code:
    ```bash
    javac TicTacToe.java
 
