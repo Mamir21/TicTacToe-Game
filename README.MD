@@ -1,23 +1,35 @@
 # Tic Tac Toe Game
 
-This is a simple implementation of the classic Tic Tac Toe game in Java. It allows two players to take turns marking spaces on a 3x3 grid, with the goal of getting three marks in a row, column, or diagonal.
+This is a simple implementation of the classic Tic Tac Toe game in Java. The game allows two players to take turns marking spaces on a 3x3 grid with the goal of getting three marks in a row, column, or diagonal.
 
 ## Features
 
-- **Two-player mode**: Play against a friend on the same computer.
-- **Interactive interface**: Easily mark your moves and see the updated board.
-- **Win detection**: Automatically detects when a player wins or the game ends in a draw.
-- **Restart option**: Choose to play again after a game is over.
+- **Two-Player Mode**: Play against a friend on the same computer.
+- **Interactive Interface**: Easily mark your moves and see the updated board.
+- **Win Detection**: Automatically detects when a player wins or the game ends in a draw.
+- **Restart Option**: Choose to play again after a game is over.
 
 ## Getting Started
 
-1. Clone the repository:
+- **Java Development Kit (JDK)**: Ensure you have JDK installed on your computer. You can download it from the [official Oracle website](https://www.oracle.com/java/technologies/javase-downloads.html) or use [OpenJDK](https://openjdk.java.net/).
 
+### Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/tic-tac-toe.git
 
 2. Navigate to the project directory:
+   ```bash
+   cd tic-tac-toe
 
+3. javac TicTacToe.java
+   ```bash
+   javac TicTacToe.java
 
-4. Follow the prompts to play the game.
+4. Run the Game:
+   ```bash
+   java TicTacToe
 
 ## How to Play
 
